@@ -5,10 +5,11 @@
 {% block content %}
 <p>{{quest}}</p>
 <form action="/answer" method="POST">
-    <input type="radio" id={{op_one}} name="option" value={{op_one}}>
+    <input type="radio" id={{op_one}} name="option" value="option">
     <label for={{op_one}}>{{op_one}}</label><br>
-    <input type="radio" id={{op_two}} name="option" value={{op_two}}>
+    <input type="radio" id={{op_two}} name="option" value="option">
     <label for={{op_two}}>{{op_two}}</label><br>
+    <input type="hidden" id="num" name="num" value={{num}} />
     <button>Submit</button>
 </form>
 {% endblock%}
