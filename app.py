@@ -28,4 +28,11 @@ def answer():
     num = session["nums"]
     num = num+1
     responses.append(answer) 
-    return redirect(f"/questions/{num}")
+    if (num != len(satisfaction_survey.questions)):
+        return redirect(f"/questions/{num}")
+    else:
+        return redirect("/thank_you")
+    
+@app.route("/thank_you")
+def show_thanks():
+    return render_template("thank_you.html")
