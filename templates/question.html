@@ -3,6 +3,9 @@
 {% block title %}Survey Question{% endblock %}
 
 {% block content %}
+{% for msg in get_flashed_messages() %}
+<p>{{msg}}</p>
+{% endfor %}
 <p>{{quest}}</p>
 <form action="/answer" method="POST">
     <input type="radio" id={{op_one}} name="option" value="option">
