@@ -8,10 +8,10 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 debug = DebugToolbarExtension(app)
 
-responses = []
 
 @app.route("/")
 def start_page():
+    session["responses"] = []
     return render_template("start.html", title=satisfaction_survey.title,
                             instruct=satisfaction_survey.instructions)
 
@@ -25,7 +25,9 @@ def show_question(num):
 @app.route("/answer", methods=["POST"])
 def answer():
     answer = request.form["option"]
+    responses = session["responses"]
     responses.append(answer) 
+    session["responses"] = responses
     num = session["nums"]
     if (num != len(responses)):
         num = len(responses)
